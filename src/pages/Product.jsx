@@ -1,8 +1,10 @@
 import styles from "./Product.module.css";
+import Navigation from "../components/Navigation";
 
 export default function Product() {
   return (
     <main className={styles.product}>
+      <Navigation />
       <section>
         <img
           src="img-1.jpg"
