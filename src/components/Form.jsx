@@ -7,6 +7,7 @@ import Button from "./Button";
 import BackButton from "./BackButton";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import Message from "./Message";
+import Spinner from "./Spinner";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
@@ -60,7 +61,10 @@ function Form() {
     [lat, lng],
   );
 
+  if (isLoadingGeocoding) return <Spinner />;
+
   if (geocodinfError) return <Message message={geocodinfError} />;
+
   return (
     <form className={styles.form}>
       <div className={styles.row}>
