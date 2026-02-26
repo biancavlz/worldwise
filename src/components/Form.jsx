@@ -27,6 +27,8 @@ function Form() {
 
   useEffect(
     function () {
+      if (!lat || !lng) return;
+
       async function fetchCityData() {
         try {
           setIsLoadingGeocoding(true);
@@ -39,6 +41,7 @@ function Form() {
           setCityName(data.city || data.locality || "");
           setCounty(data.countryName);
         } catch (err) {
+          console.error("Error fetching city data:", err);
         } finally {
           setIsLoadingGeocoding(false);
         }
