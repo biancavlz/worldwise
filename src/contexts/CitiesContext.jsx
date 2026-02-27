@@ -49,7 +49,7 @@ function CitiesProvider({ children }) {
         },
       });
       const data = await res.json(newCity);
-
+      setCities((cities) => [...cities, data]);
       console.log(data);
     } catch {
       alert("There was an error loading the city data...");
