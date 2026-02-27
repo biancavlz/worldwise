@@ -1,10 +1,15 @@
 import styles from "./Button.module.css";
 
-function Button({ children, onClick, type }) {
+// `type` is used for styling; `htmlType` sets the underlying button's `type` attribute
+function Button({ children, onClick, type = "primary", htmlType = "button" }) {
   return (
-    <div className={`${styles.btn} ${styles[type]}`} onClick={onClick}>
+    <button
+      type={htmlType}
+      className={`${styles.btn} ${styles[type]}`}
+      onClick={onClick}
+    >
       {children}
-    </div>
+    </button>
   );
 }
 

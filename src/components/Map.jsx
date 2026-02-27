@@ -42,7 +42,7 @@ function Map() {
 
   return (
     <div className={styles.mapContainer}>
-      <Button type="position" onClick={getPosition}>
+      <Button type="position" htmlType="button" onClick={getPosition}>
         {isLoadingPosition ? "Loading..." : "use your position"}
       </Button>
       <MapContainer
