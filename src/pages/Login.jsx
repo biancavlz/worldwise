@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/FakeAuthContext";
 import styles from "./Login.module.css";
 import Navigation from "../components/Navigation";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
+
+const pw = import.meta.env.VITE_FAKE_USER_PASSWORD;
 
 export default function Login() {
   const [email, setEmail] = useState("jack@example.com");
-  const [password, setPassword] = useState("qwerty");
-  const { login } = useAuth();
+  const [password, setPassword] = useState(pw);
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,6 +20,13 @@ export default function Login() {
       login(email, password);
     }
   }
+
+  useEffect(
+    function () {
+      if (isAuthenticated) navigate("/app", { replace: true });
+    },
+    [isAuthenticated, navigate],
+  );
 
   return (
     <main className={styles.login}>
