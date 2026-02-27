@@ -18,10 +18,12 @@ function reducer(state, action) {
   }
 }
 
+const password = import.meta.env.VITE_FAKE_USER_PASSWORD;
+
 const FAKE_USER = {
   name: "Jack",
   email: "jack@example.com",
-  password: "qwerty",
+  password: password,
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
